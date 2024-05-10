@@ -10,7 +10,7 @@ type Props = {
 
 const DataProvider = (props: Props) => {
   const [countries, setCountries] = useState<string[]>([]);
-  const [favourites, setFavourites] = useState<string[]>([]);
+  const [favorites, setFavorites] = useState<string[]>([]);
   const [allUniversities, setAllUniversities] = useState<DataRow[]>([]);
 
   useEffect(() => {
@@ -34,21 +34,21 @@ const DataProvider = (props: Props) => {
   }, [countries]);
 
   useEffect(() => {
-    //Load favourites from localStorage for the first time
-    if (favourites.length === 0) {
-      const favs = localStorage.getItem('favourites');
+    //Load favorites from localStorage for the first time
+    if (favorites.length === 0) {
+      const favs = localStorage.getItem('favorites');
       if (favs) {
-        setFavourites(JSON.parse(favs));
+        setFavorites(JSON.parse(favs));
       }
     }
-  }, [favourites]);
+  }, [favorites]);
 
   const { children } = props;
   const dataValue = {
     countries,
     setCountries,
-    favourites,
-    setFavourites,
+    favorites,
+    setFavorites,
     allUniversities,
     setAllUniversities,
   }

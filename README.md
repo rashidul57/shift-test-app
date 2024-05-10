@@ -1,46 +1,50 @@
-# Getting Started with Create React App
+### How to use
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
 
-## Available Scripts
+#### Prerequisites to run the application
 
-In the project directory, you can run:
+- Please make sure docker is installed in your local/testing environment. If not then please follow the link to install it https://docs.docker.com/engine/install/
+  Now docker command should be recognized in terminal, please check by the following command
+  $ docker
+  It should show something like this
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Usage: docker [OPTIONS] COMMAND
+.....
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+---
 
-### `npm test`
+- Please make sure git is installed. If not then please follow the link https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Now git command should be recognized in terminal, please check by the following command
+$ git
+It should show something like this
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]
+.....
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Steps:
 
-### `npm run eject`
+1. Open command line and navigate to a folder where you want to put the test project.
+   For example: /Users/rashidul
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+2. Run the following command to clone from github repo
+   $ git clone https://github.com/rashidul57/shift-test-app.git
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. Change directory to project folder
+   $ cd shift-test-app
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+4. Run the following command to build docker image
+   $ docker build -t rashid-shift-react-test-image:1.0 .
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+5. Run docker container (please change port 4000 if that is occupied in host)
+   $ docker run -d -p 4000:80 --name rashid-shift-react-test-container rashid-shift-react-test-image:1.0
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+6. Application should be accessible at the url
+   http://localhost:4000

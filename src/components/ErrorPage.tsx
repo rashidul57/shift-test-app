@@ -1,10 +1,13 @@
-import { Typography } from "@mui/material";
+import { Paper } from "@mui/material";
 
 const ErrorPageContent = () => {
   return (
-    <Typography id='error' sx={{ m: '10px 50px', width: 'auto' }}>
-        <h1 className="notFoundTitle">Oppps! That page can’t be found.</h1>
-    </Typography>
+    <Paper elevation={0} sx={{m: '100px', textAlign: 'center'}}>
+      <h1>404!</h1>
+      <p>
+        Please double check if you have provided correct url.
+      </p>
+    </Paper>
 );
 }
 

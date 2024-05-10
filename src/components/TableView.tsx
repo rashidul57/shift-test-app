@@ -48,7 +48,7 @@ const TableView = (props: Props) => {
   const { tableData, tableType } = props;
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
-  const { favourites, setFavourites } = useContext(DataContext);
+  const { favorites, setFavorites } = useContext(DataContext);
   
   // To avoid a layout breaking for empty rows.
   const emptyRows =
@@ -68,17 +68,17 @@ const TableView = (props: Props) => {
     setPage(0);
   };
 
-  const toggleFavourite = (row: Record<string, ColumnType>) => {
+  const toggleFavorite = (row: Record<string, ColumnType>) => {
     const uid = row.uid.toString();
     let favs = [];
-    if (favourites.indexOf(uid) === -1) {
-      favs = [...favourites, uid];
-      setFavourites(favs);
+    if (favorites.indexOf(uid) === -1) {
+      favs = [...favorites, uid];
+      setFavorites(favs);
     } else {
-      favs = _.remove([...favourites], _uid => _uid !== uid);
-      setFavourites(favs);
+      favs = _.remove([...favorites], _uid => _uid !== uid);
+      setFavorites(favs);
     }
-    localStorage.setItem('favourites', JSON.stringify(favs));
+    localStorage.setItem('favorites', JSON.stringify(favs));
   }
 
 
@@ -110,12 +110,12 @@ const TableView = (props: Props) => {
           </StyledTableCell>
         ))}
         {tableType === 'search' && <StyledTableCell align="center">
-            {favourites.indexOf(row.uid.toString()) === -1 && <FavoriteBorderIcon onClick={()=>toggleFavourite(row)}></FavoriteBorderIcon>}
-            {favourites.indexOf(row.uid.toString()) > -1 && <FavoriteIcon style={{ color: 'red' }} onClick={()=>toggleFavourite(row)}></FavoriteIcon>}
+            {favorites.indexOf(row.uid.toString()) === -1 && <FavoriteBorderIcon onClick={()=>toggleFavorite(row)}></FavoriteBorderIcon>}
+            {favorites.indexOf(row.uid.toString()) > -1 && <FavoriteIcon style={{ color: 'red' }} onClick={()=>toggleFavorite(row)}></FavoriteIcon>}
         </StyledTableCell>}
 
-        {tableType === 'favourites' && <StyledTableCell align="center">
-            <RemoveCircleOutlineOutlinedIcon onClick={()=>toggleFavourite(row)}></RemoveCircleOutlineOutlinedIcon>
+        {tableType === 'favorites' && <StyledTableCell align="center">
+            <RemoveCircleOutlineOutlinedIcon onClick={()=>toggleFavorite(row)}></RemoveCircleOutlineOutlinedIcon>
         </StyledTableCell>}
 
       </StyledTableRow>

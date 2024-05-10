@@ -60,13 +60,13 @@ const SearchPageContent = () => {
     }
   }
 
-  const showFavourites = () => {
-    navigate("/favourites");
+  const showFavorites = () => {
+    navigate("/favorites");
   }
   
   return (
     <TableContainer component={Paper} sx={{ m: '10px 50px', width: 'auto' }}>
-      <Stack direction="row" spacing={2}>
+      <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 1, sm: 2, md: 4 }}>
         <CustomSelect data={countries} selectedValue={selectedCountry} label='Country' onSelectChange={handleCountryChange}></CustomSelect>
         <TextField id="standard-basic" label="Search by name" variant="standard" value={searchKey} onChange={handleSearchChange} />
         {/* <Button sx={{textTransform: "none"}} size="small" onClick={resetFilters}>Clear All Filters</Button> */}
@@ -74,7 +74,7 @@ const SearchPageContent = () => {
         <Typography sx={{ pt: 3, pl: 3}}>Code: {resCode}</Typography>
         <Typography sx={{ pt: 3, pl: 3}}>Time: {resTime} ms</Typography>
         <Typography sx={{ flexGrow: 1 }}>&nbsp;</Typography>
-        <Link href="#" onClick={showFavourites} sx={{ pt: 3, pr: 1}}>Favourites</Link>
+        <Link href="#" onClick={showFavorites} sx={{ pt: 3, pr: 1}}>Favorites</Link>
       </Stack>
       <TableView tableData={tableData} tableType='search'></TableView>
       
