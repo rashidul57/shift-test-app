@@ -7,7 +7,7 @@
 - Please make sure docker is installed in your local/testing environment. If not then please follow the link to install it
   https://docs.docker.com/engine/install/
 
-  Now docker command should be recognized in terminal, please check by the following command
+  Now docker command should be recognized in the terminal, please check by the following command
 
   $ `docker`
 
@@ -22,7 +22,7 @@ Usage: docker [OPTIONS] COMMAND
 
 - Please make sure git is installed. If not then please follow the link https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 
-  Now git command should be recognized in terminal, please check by the following command
+  Now git command should be recognized in the terminal, please check by the following command
 
   $ `git`
 
