@@ -38,7 +38,8 @@ usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]
 #### Steps to run:
 
 1. Open command line and navigate to a folder where you want to put the test project.
-   For example: /Users/rashidul
+
+   For example: /Users/user-name/projects
 
 2. Run the following command to clone from github repo
 
