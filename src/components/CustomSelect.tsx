@@ -16,7 +16,9 @@ const CustomSelect = (props: Props) => {
 
   return (
     <div>
-      <FormControl sx={{ mt: {xs: 1, sm: 0, md: 0}, width: {xs: 'calc(100% - 10px)', sm: 'auto', md: 'auto' }}} size="small">
+      <FormControl sx={{ mt: {xs: 1, sm: 0, md: '10px'}, 
+        width: {xs: 'calc(100% - 10px)'},
+        minWidth: {sm: '200px', md: '200px' }}} size="small">
         <InputLabel id="select-autowidth-label">{label}</InputLabel>
         <Select
           labelId="simple-select-autowidth-label"

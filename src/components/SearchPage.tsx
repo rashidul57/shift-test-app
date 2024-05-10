@@ -66,7 +66,7 @@ const SearchPageContent = () => {
   const lnkStyle = { pt: {xs: 0, sm: 3, md: 3}, pr: {xs: 0, sm: 1, md: 1}, pb: {xs: 1}};
   
   return (
-    <TableContainer component={Paper} elevation={0} sx={{ p: {xs: '5px', md: '10px 50px'}, width: 'auto' }}>
+    <TableContainer component={Paper} elevation={0} sx={{ p: {xs: '5px', md: '10px 50px 0px 50px'}, width: 'auto' }}>
       <Stack direction={{ xs: 'column', sm: 'row' }} 
         spacing={{ xs: 1, sm: 2, md: 4 }}
         sx={{mt: {xs: 1, md: 1}, ml: {xs: 1}}}>
