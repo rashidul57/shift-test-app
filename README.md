@@ -4,19 +4,21 @@
 
 #### Prerequisites to run the application
 
-- Please make sure docker is installed in your local/testing environment. If not then please follow the link to install it https://docs.docker.com/engine/install/
+- Please make sure docker is installed in your local/testing environment. If not then please follow the link to install it
+  https://docs.docker.com/engine/install/
+
   Now docker command should be recognized in terminal, please check by the following command
 
   $ `docker`
 
   It should show something like this
 
----
+```
 
 Usage: docker [OPTIONS] COMMAND
 .....
 
----
+```
 
 - Please make sure git is installed. If not then please follow the link https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 
@@ -26,12 +28,12 @@ Usage: docker [OPTIONS] COMMAND
 
   It should show something like this
 
----
+```
 
 usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]
 .....
 
----
+```
 
 #### Steps to run:
 
@@ -50,7 +52,7 @@ usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]
 
    $ `docker build -t rashid-shift-react-test-image:1.0 .`
 
-5. Run docker container (please change the port 4000 if that is occupied in host)
+5. Run docker container (please change the port 4000 if that is occupied by other service in the host)
 
    $ `docker run -d -p 4000:80 --name rashid-shift-react-test-container rashid-shift-react-test-image:1.0`
 
