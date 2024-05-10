@@ -7,10 +7,11 @@ import { DataRow } from '../types/TableInfo';
 import _ from 'lodash';
 import CustomSelect from './CustomSelect';
 import { baseApiUrl, defaultCountry } from '../data/configs';
-import { Box, Button, Link, SelectChangeEvent, Stack, TextField, Typography } from '@mui/material';
+import { Link, Stack, TextField, Typography } from '@mui/material';
 import DataContext from '../context/data-context';
 import { useNavigate } from 'react-router-dom';
 import TableView from './TableView';
+import InjectUid from '../utils/helper';
 
 const SearchPageContent = () => {
   const [tableData, setTableData] = useState([] as DataRow[]);
@@ -33,11 +34,7 @@ const SearchPageContent = () => {
           return res.json();
         })
         .then((data: DataRow[]) => {
-          //console.log(data.length)
-          setTableData(data.map(item => {
-            item.uid = item.name + '-' + item.country;
-            return item;
-          }));
+          setTableData(InjectUid(data));
           const milliSecs = (Date.now() - start);
           setResTime(milliSecs);
         });
@@ -63,18 +60,26 @@ const SearchPageContent = () => {
   const showFavorites = () => {
     navigate("/favorites");
   }
+
+  const searchStyle = { width: {xs: 'calc(100% - 10px)', sm: 'auto', md: 'auto'} };
+  const typoStyle = { pt: {xs: 0, sm: 3, md: 3}, pr: {xs: 0, sm: 1, md: 1}, pb: {xs: 1}};
+  const lnkStyle = { pt: {xs: 0, sm: 3, md: 3}, pr: {xs: 0, sm: 1, md: 1}, pb: {xs: 1}};
   
   return (
-    <TableContainer component={Paper} sx={{ m: '10px 50px', width: 'auto' }}>
-      <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 1, sm: 2, md: 4 }}>
+    <TableContainer component={Paper} sx={{ p: {xs: '5px', md: '10px 50px'}, width: 'auto' }}>
+      <Stack direction={{ xs: 'column', sm: 'row' }} 
+        spacing={{ xs: 1, sm: 2, md: 4 }}
+        sx={{mt: {xs: 1, md: 1}, ml: {xs: 1}}}>
         <CustomSelect data={countries} selectedValue={selectedCountry} label='Country' onSelectChange={handleCountryChange}></CustomSelect>
-        <TextField id="standard-basic" label="Search by name" variant="standard" value={searchKey} onChange={handleSearchChange} />
-        {/* <Button sx={{textTransform: "none"}} size="small" onClick={resetFilters}>Clear All Filters</Button> */}
-        <Link href="#" onClick={resetFilters} sx={{ pt: 3}}>Clear All Filters</Link>
-        <Typography sx={{ pt: 3, pl: 3}}>Code: {resCode}</Typography>
-        <Typography sx={{ pt: 3, pl: 3}}>Time: {resTime} ms</Typography>
-        <Typography sx={{ flexGrow: 1 }}>&nbsp;</Typography>
-        <Link href="#" onClick={showFavorites} sx={{ pt: 3, pr: 1}}>Favorites</Link>
+        <TextField id="standard-basic" label="Search by name" variant="standard" 
+          value={searchKey}
+          onChange={handleSearchChange}
+          sx={searchStyle} size="small"/>
+        <Link href="#" onClick={resetFilters} sx={{ p: {xs: '10px 0px', md: 3}}}>Clear All Filters</Link>
+        <Typography sx={typoStyle}>Response Code: {resCode}</Typography>
+        <Typography sx={typoStyle}>Response Time: {resTime} ms</Typography>
+        <Typography sx={{ flexGrow: {xs: 0, md: 1}, display: {xs: 'none', md: 'inline-block'} }}>&nbsp;</Typography>
+        <Link href="#" onClick={showFavorites} sx={lnkStyle}>Favorites</Link>
       </Stack>
       <TableView tableData={tableData} tableType='search'></TableView>
       

@@ -12,10 +12,11 @@ import RemoveCircleOutlineOutlinedIcon from '@mui/icons-material/RemoveCircleOut
 
 import { styled } from '@mui/material/styles';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
-import { ColumnType, DataRow, fields } from '../types/TableInfo';
+import { ColumnType, DataRow } from '../types/TableInfo';
 import { useContext, useState } from 'react';
 import DataContext from '../context/data-context';
 import _ from 'lodash';
+import { fields } from '../data/configs';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {

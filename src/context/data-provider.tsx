@@ -3,6 +3,7 @@ import DataContext from "./data-context"
 import _ from "lodash"
 import { baseApiUrl } from "../data/configs"
 import { DataRow } from "../types/TableInfo"
+import InjectUid from "../utils/helper"
 
 type Props = {
   children: any
@@ -22,10 +23,7 @@ const DataProvider = (props: Props) => {
           return res.json();
         })
         .then((data: DataRow[]) => {
-          setAllUniversities(data.map(item => {
-            item.uid = item.name + '-' + item.country;
-            return item;
-          }));
+          setAllUniversities(InjectUid(data));
           const groupedData = _.groupBy(data, 'country');
           const _countries = Object.keys(groupedData).sort();
           setCountries(_countries);
